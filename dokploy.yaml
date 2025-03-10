@@ -1,0 +1,21 @@
+version: "1"
+
+app:
+  name: dokploy-demo
+  image: ${DOKPLOY_IMAGE}
+  env:
+    - name: PORT
+      value: "3000"
+  
+  ports:
+    - port: 3000
+      as: 80
+      internet: true
+
+  health:
+    path: /health
+    port: 3000
+
+  resources:
+    cpu: 0.1
+    memory: 128Mi
